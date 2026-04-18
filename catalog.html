@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог аксессуаров оптом — Mobitrend | 3500+ позиций</title>
+  <meta name="description" content="Оптовый каталог цифровых аксессуаров: чехлы, зарядки, стекла, Power Bank. Фильтр по маржинальности. Три уровня цен для оптовых покупателей." />
+  <meta name="keywords" content="каталог аксессуары оптом, купить оптом чехлы зарядки, прайс-лист аксессуары" />
+  <link rel="canonical" href="https://mobitrend.store/catalog" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Каталог аксессуаров оптом",
+    "description": "Более 3500 позиций цифровых аксессуаров для оптовых покупателей",
+    "url": "https://mobitrend.store/catalog",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://mobitrend.store/" },
+        { "@type": "ListItem", "position": 2, "name": "Каталог", "item": "https://mobitrend.store/catalog" }
+      ]
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">M</div>
+        Mobi<span>trend</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html" class="active">Каталог</a>
+        <a href="index.html#calculator">Калькулятор</a>
+        <a href="index.html#blog">Блог</a>
+        <a href="index.html#contacts">Контакты</a>
+      </nav>
+      <div class="header-actions">
+        <span class="header-phone">📞 8 800 555-35-35</span>
+        <button class="btn btn-secondary btn-sm" onclick="openModal()">Скачать прайс</button>
+      </div>
+      <button class="burger" onclick="toggleMobileMenu()" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="index.html" class="logo"><div class="logo-mark">M</div>Mobi<span>trend</span></a>
+    <button onclick="toggleMobileMenu()" style="font-size:1.5rem; color:var(--ink-muted);">✕</button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">🏠 Главная</a>
+    <a href="catalog.html">📦 Каталог</a>
+    <a href="index.html#calculator">💰 Калькулятор</a>
+    <a href="index.html#blog">📖 Блог</a>
+  </nav>
+</div>
+
+<div class="container">
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Навигационная цепочка">
+    <a href="index.html">Главная</a>
+    <span class="sep">›</span>
+    <span>Каталог</span>
+  </nav>
+
+  <!-- Catalog Layout -->
+  <div class="catalog-layout">
+
+    <!-- ═══ SIDEBAR FILTERS ═══ -->
+    <aside class="filters-sidebar" aria-label="Фильтры">
+
+      <!-- Category filter -->
+      <div class="filter-card">
+        <div class="filter-title">Категория</div>
+        <div class="filter-group" id="categoryFilters">
+          <label class="filter-check"><input type="checkbox" value="cases" onchange="applyFilters()"><label>📱 Чехлы</label></label>
+          <label class="filter-check"><input type="checkbox" value="chargers" onchange="applyFilters()"><label>⚡ Зарядки</label></label>
+          <label class="filter-check"><input type="checkbox" value="glass" onchange="applyFilters()"><label>🪟 Стёкла</label></label>
+          <label class="filter-check"><input type="checkbox" value="powerbanks" onchange="applyFilters()"><label>🔋 Power Bank</label></label>
+          <label class="filter-check"><input type="checkbox" value="cables" onchange="applyFilters()"><label>🔌 Кабели</label></label>
+          <label class="filter-check"><input type="checkbox" value="bands" onchange="applyFilters()"><label>⌚ Ремешки</label></label>
+        </div>
+      </div>
+
+      <!-- Brand filter -->
+      <div class="filter-card">
+        <div class="filter-title">Бренд</div>
+        <div class="filter-group">
+          <label class="filter-check"><input type="checkbox" value="Anker" onchange="applyFilters()"><label>Anker</label></label>
+          <label class="filter-check"><input type="checkbox" value="Apple" onchange="applyFilters()"><label>Apple</label></label>
+          <label class="filter-check"><input type="checkbox" value="Gurdini" onchange="applyFilters()"><label>Gurdini</label></label>
+        </div>
+      </div>
+
+      <!-- Price filter -->
+      <div class="filter-card">
+        <div class="filter-title">Цена (крупный опт)</div>
+        <input type="range" class="slider" id="priceSlider" min="100" max="6000" value="6000" step="100" onchange="applyFilters()" style="background:rgba(15,25,35,0.12); margin-top:8px;">
+        <div class="slider-range" style="color:var(--ink-muted);">
+          <span>от 100 ₽</span>
+          <span id="priceSliderVal">до 6 000 ₽</span>
+        </div>
+        <div class="price-range-inputs">
+          <input type="number" class="price-input" id="priceMin" placeholder="от" value="100" onchange="applyFilters()">
+          <input type="number" class="price-input" id="priceMax" placeholder="до" value="6000" onchange="applyFilters()">
+        </div>
+      </div>
+
+      <!-- ★ UNIQUE: Margin filter -->
+      <div class="filter-card">
+        <div class="filter-title">
+          📈 Маржинальность
+          <span class="badge badge-orange" style="font-size:0.7rem;">Уникально</span>
+        </div>
+        <p style="font-size:0.8rem; color:var(--ink-muted); margin-bottom:12px;">Показывать только товары с маржой не ниже:</p>
+        <div class="filter-group">
+          <label class="filter-check"><input type="radio" name="margin" value="0" onchange="applyFilters()" checked><label>Все товары</label></label>
+          <label class="filter-check"><input type="radio" name="margin" value="100" onchange="applyFilters()"><label>от 100%</label></label>
+          <label class="filter-check"><input type="radio" name="margin" value="150" onchange="applyFilters()"><label>от 150%</label></label>
+          <label class="filter-check"><input type="radio" name="margin" value="200" onchange="applyFilters()"><label>от 200%</label></label>
+          <label class="filter-check"><input type="radio" name="margin" value="250" onchange="applyFilters()"><label>от 250% 🔥</label></label>
+        </div>
+      </div>
+
+      <!-- In stock filter -->
+      <div class="filter-card">
+        <label class="filter-check" style="cursor:pointer;">
+          <input type="checkbox" id="inStock" onchange="applyFilters()" checked>
+          <label style="cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--ink);">Только в наличии</label>
+        </label>
+      </div>
+
+      <button onclick="resetFilters()" class="btn btn-secondary w-full" style="justify-content:center;">Сбросить фильтры</button>
+    </aside>
+
+    <!-- ═══ PRODUCTS COLUMN ═══ -->
+    <main>
+      <div class="catalog-toolbar">
+        <div>
+          <span class="catalog-count" id="catalogCount">Загрузка…</span>
+        </div>
+        <select class="sort-select" id="sortSelect" onchange="applyFilters()" aria-label="Сортировка">
+          <option value="popular">По популярности</option>
+          <option value="price-asc">Цена: по возрастанию</option>
+          <option value="price-desc">Цена: по убыванию</option>
+          <option value="margin-desc">По маржинальности ↓</option>
+        </select>
+      </div>
+
+      <!-- Product grid -->
+      <div class="catalog-products-grid" id="catalogGrid">
+        <!-- Filled by JS -->
+      </div>
+
+      <!-- Empty state -->
+      <div id="emptyState" class="hidden" style="text-align:center; padding:64px 0; color:var(--ink-muted);">
+        <div style="font-size:3rem; margin-bottom:16px;">🔍</div>
+        <h3 style="font-family:var(--font-display); color:var(--ink); margin-bottom:8px;">Ничего не найдено</h3>
+        <p>Попробуйте изменить параметры фильтра</p>
+        <button onclick="resetFilters()" class="btn btn-primary" style="margin-top:16px;">Сбросить фильтры</button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- CTA Banner -->
+<section style="padding:48px 0;">
+  <div class="container">
+    <div class="cta-banner">
+      <div>
+        <h2 class="cta-title">Нужен индивидуальный прайс?</h2>
+        <p class="cta-sub">Для крупных партнёров — специальные условия и персональный менеджер</p>
+      </div>
+      <div class="cta-actions">
+        <button onclick="openModal()" class="btn btn-orange btn-lg">Получить спецпредложение</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo footer-logo-white"><div class="logo-mark">M</div>Mobi<span>trend</span></a>
+        <p>Оптовый поставщик цифровых аксессуаров. Более 3500 позиций в наличии.</p>
+      </div>
+      <div>
+        <div class="footer-title">Каталог</div>
+        <div class="footer-links">
+          <a href="catalog.html?cat=cases">Чехлы</a>
+          <a href="catalog.html?cat=chargers">Зарядки</a>
+          <a href="catalog.html?cat=glass">Стёкла</a>
+          <a href="catalog.html?cat=powerbanks">Power Bank</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Компания</div>
+        <div class="footer-links">
+          <a href="#">О нас</a>
+          <a href="#">Документы</a>
+          <a href="#">Партнёрам</a>
+          <a href="index.html#blog">Блог</a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-title">Контакты</div>
+        <p>
+          <a href="tel:+78005553535">📞 8 800 555-35-35</a><br>
+          <a href="mailto:opt@mobitrend.store">✉️ opt@mobitrend.store</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Mobitrend. Все права защищены.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div style="font-size:2rem; margin-bottom:12px;">📋</div>
+    <h2 class="modal-title">Получить прайс-лист</h2>
+    <p class="modal-sub">Пришлём актуальный прайс в течение 5 минут.</p>
+    <form onsubmit="handleFormSubmit(event)">
+      <div class="form-group"><label class="form-label">Ваше имя</label><input type="text" class="form-input" placeholder="Алексей Иванов" required></div>
+      <div class="form-group"><label class="form-label">Телефон</label><input type="tel" class="form-input" placeholder="+7 (999) 000-00-00" required></div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="you@company.ru"></div>
+      <button type="submit" class="btn btn-primary w-full" style="justify-content:center; margin-top:8px;">Отправить и получить прайс</button>
+    </form>
+  </div>
+</div>
+
+<script>
+let ALL_PRODUCTS = [];
+
+async function init() {
+  try {
+    const res = await fetch('products.json');
+    ALL_PRODUCTS = await res.json();
+  } catch {
+    ALL_PRODUCTS = FALLBACK;
+  }
+  // Check URL params for pre-set category
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get('cat');
+  if (cat) {
+    const cb = document.querySelector(`#categoryFilters input[value="${cat}"]`);
+    if (cb) cb.checked = true;
+  }
+  applyFilters();
+}
+
+const FALLBACK = [
+  { id:1, slug:'anker-powercore-10000', name:'Power Bank Anker PowerCore 10000', brand:'Anker', category:'powerbanks', image:'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&q=80', prices:{retail:2490,smallWholesale:1490,largeWholesale:990}, margin:251, stock:320 },
+  { id:2, slug:'gurdini-case-iphone-15', name:'Чехол Gurdini Leather для iPhone 15', brand:'Gurdini', category:'cases', image:'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&q=80', prices:{retail:1290,smallWholesale:690,largeWholesale:420}, margin:207, stock:850 },
+  { id:3, slug:'tempered-glass-samsung-s24', name:'Защитное стекло 5D для Samsung Galaxy S24', brand:'Gurdini', category:'glass', image:'https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=400&q=80', prices:{retail:590,smallWholesale:290,largeWholesale:180}, margin:227, stock:1200 },
+  { id:4, slug:'anker-charger-65w', name:'Зарядное устройство Anker Nano 65W GaN', brand:'Anker', category:'chargers', image:'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400&q=80', prices:{retail:3490,smallWholesale:1990,largeWholesale:1350}, margin:158, stock:210 },
+  { id:5, slug:'apple-watch-band-sport', name:'Ремешок Sport Band для Apple Watch 45mm', brand:'Apple', category:'bands', image:'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&q=80', prices:{retail:1990,smallWholesale:990,largeWholesale:650}, margin:206, stock:540 },
+  { id:6, slug:'usb-c-cable-anker-2m', name:'Кабель Anker USB-C to USB-C 240W 2м', brand:'Anker', category:'cables', image:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', prices:{retail:890,smallWholesale:490,largeWholesale:320}, margin:178, stock:980 },
+  { id:7, slug:'magsafe-wallet-gurdini', name:'MagSafe-кошелёк Gurdini Leather', brand:'Gurdini', category:'cases', image:'https://images.unsplash.com/photo-1627123424574-724758594e93?w=400&q=80', prices:{retail:1490,smallWholesale:790,largeWholesale:520}, margin:186, stock:340 },
+  { id:8, slug:'powerbank-anker-26800', name:'Power Bank Anker PowerCore 26800 PD', brand:'Anker', category:'powerbanks', image:'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80', prices:{retail:5990,smallWholesale:3490,largeWholesale:2490}, margin:140, stock:115 }
+];
+
+function applyFilters() {
+  // Read category checkboxes
+  const selCats = [...document.querySelectorAll('#categoryFilters input:checked')].map(i => i.value);
+  // Read brand checkboxes
+  const selBrands = [...document.querySelectorAll('.filter-group input[value="Anker"], .filter-group input[value="Apple"], .filter-group input[value="Gurdini"]')]
+    .filter(i => i.checked).map(i => i.value);
+  // Price
+  const priceMax = parseInt(document.getElementById('priceSlider').value);
+  document.getElementById('priceSliderVal').textContent = `до ${priceMax.toLocaleString('ru-RU')} ₽`;
+  document.getElementById('priceMax').value = priceMax;
+  // Margin
+  const minMargin = parseInt(document.querySelector('input[name="margin"]:checked')?.value || 0);
+  // In stock
+  const inStock = document.getElementById('inStock').checked;
+  // Sort
+  const sort = document.getElementById('sortSelect').value;
+
+  let result = [...ALL_PRODUCTS];
+  if (selCats.length) result = result.filter(p => selCats.includes(p.category));
+  if (selBrands.length) result = result.filter(p => selBrands.includes(p.brand));
+  result = result.filter(p => p.prices.largeWholesale <= priceMax);
+  if (minMargin > 0) result = result.filter(p => p.margin >= minMargin);
+  if (inStock) result = result.filter(p => p.stock > 0);
+
+  if (sort === 'price-asc') result.sort((a,b) => a.prices.largeWholesale - b.prices.largeWholesale);
+  else if (sort === 'price-desc') result.sort((a,b) => b.prices.largeWholesale - a.prices.largeWholesale);
+  else if (sort === 'margin-desc') result.sort((a,b) => b.margin - a.margin);
+
+  renderCatalog(result);
+}
+
+function resetFilters() {
+  document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(i => i.checked = false);
+  document.querySelector('input[name="margin"][value="0"]').checked = true;
+  document.getElementById('priceSlider').value = 6000;
+  document.getElementById('inStock').checked = true;
+  applyFilters();
+}
+
+function renderCatalog(products) {
+  const grid = document.getElementById('catalogGrid');
+  const empty = document.getElementById('emptyState');
+  const count = document.getElementById('catalogCount');
+
+  count.textContent = `Найдено: ${products.length} товаров`;
+
+  if (!products.length) {
+    grid.innerHTML = '';
+    empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+
+  grid.innerHTML = products.map(p => `
+    <div class="product-card">
+      <div class="product-card-img">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <div class="product-card-badges">
+          ${p.margin >= 200 ? `<span class="badge badge-green">+${p.margin}% маржа</span>` : ''}
+          ${p.stock < 50 ? `<span class="badge badge-orange">⚠ Мало</span>` : ''}
+        </div>
+      </div>
+      <div class="product-card-body">
+        <div class="product-brand">${p.brand}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="price-table">
+          <div class="price-row retail">
+            <span class="price-tier">Розница</span>
+            <span class="price-value">${p.prices.retail.toLocaleString('ru-RU')} ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-tier">Мелкий опт</span>
+            <span class="price-value">${p.prices.smallWholesale.toLocaleString('ru-RU')} ₽</span>
+          </div>
+          <div class="price-row wholesale-lg">
+            <span class="price-tier">Крупный опт</span>
+            <span class="price-value">${p.prices.largeWholesale.toLocaleString('ru-RU')} ₽</span>
+          </div>
+        </div>
+        <div class="product-card-footer">
+          <a href="product.html?id=${p.id}" class="btn btn-primary btn-sm">Подробнее</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openModal() { document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('modalOverlay').addEventListener('click', e => { if(e.target===document.getElementById('modalOverlay')) closeModal(); });
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('[type="submit"]');
+  btn.textContent = '✓ Отправлено!'; btn.disabled=true; btn.style.background='var(--green)';
+  setTimeout(closeModal, 2000);
+}
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+document.getElementById('priceSlider').addEventListener('input', function() {
+  document.getElementById('priceSliderVal').textContent = `до ${parseInt(this.value).toLocaleString('ru-RU')} ₽`;
+  document.getElementById('priceMax').value = this.value;
+  applyFilters();
+});
+
+init();
+</script>
+</body>
+</html>

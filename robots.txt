@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://mobitrend.store/sitemap.xml
