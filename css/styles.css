@@ -6,32 +6,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
 
 /* ── CSS Variables ── */
-/* Palette: emerald green accent + warm oak wood surfaces (Apple Flagship inspired) */
+/* Palette: clean white surfaces + emerald green accent */
 :root {
   --white:      #FFFFFF;
-  --ink:        #2D1E12;   /* warm dark brown (main text) */
-  --ink-soft:   #5A4937;   /* muted brown */
-  --ink-muted:  #8B7A68;   /* lighter warm grey-brown */
+  --ink:        #0F1923;   /* dark slate (main text) */
+  --ink-soft:   #3D4A5C;   /* muted slate */
+  --ink-muted:  #7A8A9C;   /* light grey-blue */
   --blue:       #059669;   /* primary emerald green (CTA) */
   --blue-light: #10B981;   /* bright emerald (accents) */
-  --blue-glow:  rgba(5, 150, 105, 0.18);
-  --orange:     #D97706;   /* warm amber (pairs with wood) */
-  --orange-soft:#FEF3E2;
-  --surface:    #F5EBD8;   /* light oak — card/shelf background */
-  --border:     #E4D5B7;   /* wood border */
-  --wood:       #D4B896;   /* medium oak — hero/stage surfaces */
-  --wood-dark:  #A67B5B;   /* darker oak — deep accents */
-  --cream:      #FAF5EC;   /* off-white with wood warmth */
+  --blue-glow:  rgba(5, 150, 105, 0.15);
+  --orange:     #F97316;   /* warm accent */
+  --orange-soft:#FFF4EC;
+  --surface:    #F8FAFD;   /* cool off-white — card background */
+  --border:     #E4EAF2;   /* cool light border */
   --green:      #16A34A;
   --green-soft: #F0FDF4;
   --radius-sm:  6px;
   --radius-md:  12px;
   --radius-lg:  20px;
   --radius-xl:  32px;
-  --shadow-sm:  0 1px 3px rgba(45,30,18,0.07), 0 1px 2px rgba(45,30,18,0.04);
-  --shadow-md:  0 4px 16px rgba(45,30,18,0.10), 0 2px 4px rgba(45,30,18,0.06);
-  --shadow-lg:  0 12px 40px rgba(45,30,18,0.12), 0 4px 8px rgba(45,30,18,0.06);
-  --shadow-blue:0 8px 32px rgba(5,150,105,0.28);
+  --shadow-sm:  0 1px 3px rgba(15,25,35,0.07), 0 1px 2px rgba(15,25,35,0.04);
+  --shadow-md:  0 4px 16px rgba(15,25,35,0.10), 0 2px 4px rgba(15,25,35,0.06);
+  --shadow-lg:  0 12px 40px rgba(15,25,35,0.12), 0 4px 8px rgba(15,25,35,0.06);
+  --shadow-blue:0 8px 32px rgba(5,150,105,0.25);
   --font-display: 'Syne', sans-serif;
   --font-body:    'DM Sans', sans-serif;
   --transition:   0.22s cubic-bezier(0.4, 0, 0.2, 1);
