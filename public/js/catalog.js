@@ -3,12 +3,6 @@
  * Загружает товары через /api/products, динамически строит фильтры брендов и категорий.
  */
 (async () => {
-  const CATEGORY_ICONS = {
-    cases: '📱', chargers: '⚡', glass: '🪟', powerbanks: '🔋',
-    cables: '🔌', headphones: '🎧', memory: '💾', holders: '📌',
-    bands: '⌚', other: '📦',
-  };
-
   let ALL = [];
 
   // ── Helpers ──
@@ -53,11 +47,11 @@
     const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
     box.innerHTML = sorted.map(([cat, n]) => {
       const name = (ALL.find(p => p.category === cat) || {}).categoryName || cat;
-      const icon = CATEGORY_ICONS[cat] || '📦';
+      const icon = MTIcons.get(cat);
       return `
-        <label class="filter-check">
+        <label class="filter-check filter-cat">
           <input type="checkbox" value="${cat}">
-          <label>${icon} ${escHtml(name)} <span style="opacity:.5; font-weight:400;">(${n})</span></label>
+          <label><span class="cat-icon-wrap">${icon}</span>${escHtml(name)} <span class="cat-count-mini">${n}</span></label>
         </label>`;
     }).join('') || '<div class="login-hint">Пока нет товаров</div>';
   }
@@ -224,3 +218,4 @@
 
   init();
 })();
+                                                                                                                                                                                                  

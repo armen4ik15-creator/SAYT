@@ -2,6 +2,41 @@
  * Mobitrend — главная: загрузка хитов, калькулятор, всякое
  */
 (async () => {
+  // ── Категории на главной (грузим из API) ──
+  const catGrid = document.getElementById('homeCategoriesGrid');
+  if (catGrid) {
+    try {
+      const r = await MTApi.listCategories();
+      const items = (r.items || []).slice(0, 8);
+      if (items.length) {
+        catGrid.innerHTML = items.map(c => `
+          <a href="catalog.html?cat=${encodeURIComponent(c.category)}" class="category-card">
+            <div class="cat-icon">${MTIcons.get(c.category)}</div>
+            <div class="cat-name">${escHtml(c.name || c.category)}</div>
+            <div class="cat-count">${c.count} ${c.count === 1 ? 'позиция' : c.count < 5 ? 'позиции' : 'позиций'}</div>
+          </a>
+        `).join('');
+      } else {
+        // Заглушка на случай пустого каталога — показываем стандартные категории
+        const fallback = [
+          ['cases', 'Чехлы'],
+          ['chargers', 'Зарядки'],
+          ['glass', 'Стёкла'],
+          ['powerbanks', 'Power Bank'],
+          ['cables', 'Кабели'],
+          ['headphones', 'Наушники'],
+        ];
+        catGrid.innerHTML = fallback.map(([cat, name]) => `
+          <a href="catalog.html?cat=${cat}" class="category-card">
+            <div class="cat-icon">${MTIcons.get(cat)}</div>
+            <div class="cat-name">${name}</div>
+            <div class="cat-count">скоро в наличии</div>
+          </a>
+        `).join('');
+      }
+    } catch (e) { /* silent */ }
+  }
+
   // ── Hits (товары с isHit) ──
   const grid = document.getElementById('hitsGrid');
   if (grid) {
@@ -45,42 +80,4 @@
           <a href="product.html?slug=${encodeURIComponent(p.slug)}" class="product-name" style="text-decoration:none; color:inherit;">${escHtml(p.name)}</a>
           <div class="price-table">
             ${p.prices?.retail ? `
-            <div class="price-row retail">
-              <span class="price-tier">Розница</span>
-              <span class="price-value">${formatPrice(p.prices.retail)}</span>
-            </div>` : ''}
-            <div class="price-row">
-              <span class="price-tier">Мелкий опт</span>
-              <span class="price-value">${formatPrice(p.prices?.smallWholesale)}</span>
-            </div>
-            <div class="price-row wholesale-lg">
-              <span class="price-tier">Крупный опт</span>
-              <span class="price-value">${formatPrice(p.prices?.largeWholesale)}</span>
-            </div>
-          </div>
-          <div class="product-card-footer">
-            <a href="product.html?slug=${encodeURIComponent(p.slug)}" class="btn btn-primary btn-sm">Подробнее</a>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // ── Калькулятор прибыли ──
-  const slider = document.getElementById('purchaseSlider');
-  if (slider) {
-    const update = () => {
-      const v = parseInt(slider.value, 10);
-      const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-      set('purchaseAmount', formatPrice(v));
-      set('profitMin', formatPrice(v));
-      set('profitMax', formatPrice(v * 3));
-      set('monthlyRevenue', formatPrice(v * 2 * 2));
-    };
-    slider.addEventListener('input', update);
-    update();
-  }
-
-  // ── Esc для модалки ──
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-})();
+            <div class="
