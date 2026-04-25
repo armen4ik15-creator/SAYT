@@ -3,7 +3,7 @@
 
   <!-- Главная страница -->
   <url>
-    <loc>https://mobitrend.ru/</loc>
+    <loc>https://mobitrend.store/</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
   <!-- Каталог -->
   <url>
-    <loc>https://mobitrend.ru/catalog</loc>
+    <loc>https://mobitrend.store/catalog</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -19,25 +19,25 @@
 
   <!-- Категории каталога -->
   <url>
-    <loc>https://mobitrend.ru/catalog?cat=cases</loc>
+    <loc>https://mobitrend.store/catalog?cat=cases</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/catalog?cat=chargers</loc>
+    <loc>https://mobitrend.store/catalog?cat=chargers</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/catalog?cat=glass</loc>
+    <loc>https://mobitrend.store/catalog?cat=glass</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/catalog?cat=powerbanks</loc>
+    <loc>https://mobitrend.store/catalog?cat=powerbanks</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -45,31 +45,31 @@
 
   <!-- Карточки товаров -->
   <url>
-    <loc>https://mobitrend.ru/catalog/anker-powercore-10000</loc>
+    <loc>https://mobitrend.store/catalog/anker-powercore-10000</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/catalog/gurdini-case-iphone-15</loc>
+    <loc>https://mobitrend.store/catalog/gurdini-case-iphone-15</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/catalog/anker-charger-65w</loc>
+    <loc>https://mobitrend.store/catalog/anker-charger-65w</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/catalog/tempered-glass-samsung-s24</loc>
+    <loc>https://mobitrend.store/catalog/tempered-glass-samsung-s24</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/catalog/usb-c-cable-anker-2m</loc>
+    <loc>https://mobitrend.store/catalog/usb-c-cable-anker-2m</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -77,25 +77,25 @@
 
   <!-- Блог -->
   <url>
-    <loc>https://mobitrend.ru/blog</loc>
+    <loc>https://mobitrend.store/blog</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/blog/top-10-tovarov-s-vysokoy-marzhoy-2025</loc>
+    <loc>https://mobitrend.store/blog/top-10-tovarov-s-vysokoy-marzhoy-2025</loc>
     <lastmod>2025-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/blog/kak-vybrat-postavshchika</loc>
+    <loc>https://mobitrend.store/blog/kak-vybrat-postavshchika</loc>
     <lastmod>2025-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://mobitrend.ru/blog/aksessuary-iphone-16-optom</loc>
+    <loc>https://mobitrend.store/blog/aksessuary-iphone-16-optom</loc>
     <lastmod>2025-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
