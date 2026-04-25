@@ -1,0 +1,263 @@
+[
+  {
+    "id": 1,
+    "slug": "anker-powercore-10000",
+    "name": "Power Bank Anker PowerCore 10000",
+    "brand": "Anker",
+    "category": "powerbanks",
+    "categoryName": "Power Bank",
+    "sku": "ANK-PC-10K-BLK",
+    "image": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80",
+      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80"
+    ],
+    "prices": {
+      "retail": 2490,
+      "smallWholesale": 1490,
+      "largeWholesale": 990
+    },
+    "minQty": { "smallWholesale": 10, "largeWholesale": 50 },
+    "margin": 251,
+    "stock": 320,
+    "rating": 4.8,
+    "reviews": 142,
+    "isHit": true,
+    "description": "Компактный павербанк с быстрой зарядкой. Ёмкость 10 000 мАч, два USB-A порта. Идеален для ежедневного использования.",
+    "specs": {
+      "Ёмкость": "10 000 мАч",
+      "Выходы": "2x USB-A",
+      "Ток заряда": "12W",
+      "Вес": "180 г",
+      "Гарантия": "12 месяцев"
+    },
+    "relatedIds": [2, 5, 7]
+  },
+  {
+    "id": 2,
+    "slug": "gurdini-case-iphone-15",
+    "name": "Чехол Gurdini Leather для iPhone 15",
+    "brand": "Gurdini",
+    "category": "cases",
+    "categoryName": "Чехлы",
+    "sku": "GRD-LTH-IP15-BRN",
+    "image": "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=800&q=80"
+    ],
+    "prices": {
+      "retail": 1290,
+      "smallWholesale": 690,
+      "largeWholesale": 420
+    },
+    "minQty": { "smallWholesale": 20, "largeWholesale": 100 },
+    "margin": 207,
+    "stock": 850,
+    "rating": 4.6,
+    "reviews": 89,
+    "isHit": true,
+    "description": "Кожаный чехол ручной работы для iPhone 15. Натуральная кожа, прошивка вощёной нитью, защита всех кнопок.",
+    "specs": {
+      "Материал": "Натуральная кожа",
+      "Совместимость": "iPhone 15",
+      "Цвет": "Коричневый",
+      "Гарантия": "12 месяцев"
+    },
+    "relatedIds": [1, 3, 6]
+  },
+  {
+    "id": 3,
+    "slug": "tempered-glass-samsung-s24",
+    "name": "Защитное стекло 5D для Samsung Galaxy S24",
+    "brand": "Gurdini",
+    "category": "glass",
+    "categoryName": "Стекла",
+    "sku": "GRD-GL5D-SS24",
+    "image": "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=400&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=800&q=80"
+    ],
+    "prices": {
+      "retail": 590,
+      "smallWholesale": 290,
+      "largeWholesale": 180
+    },
+    "minQty": { "smallWholesale": 50, "largeWholesale": 200 },
+    "margin": 227,
+    "stock": 1200,
+    "rating": 4.7,
+    "reviews": 203,
+    "isHit": true,
+    "description": "Стекло с полным покрытием экрана, олеофобное покрытие, защита от царапин 9H.",
+    "specs": {
+      "Твёрдость": "9H",
+      "Тип": "5D Full Cover",
+      "Совместимость": "Samsung Galaxy S24",
+      "В упаковке": "1 шт + набор установки"
+    },
+    "relatedIds": [2, 4, 7]
+  },
+  {
+    "id": 4,
+    "slug": "anker-charger-65w",
+    "name": "Зарядное устройство Anker Nano 65W GaN",
+    "brand": "Anker",
+    "category": "chargers",
+    "categoryName": "Зарядки",
+    "sku": "ANK-NAN-65W-WHT",
+    "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=800&q=80"
+    ],
+    "prices": {
+      "retail": 3490,
+      "smallWholesale": 1990,
+      "largeWholesale": 1350
+    },
+    "minQty": { "smallWholesale": 10, "largeWholesale": 30 },
+    "margin": 158,
+    "stock": 210,
+    "rating": 4.9,
+    "reviews": 317,
+    "isHit": true,
+    "description": "Компактная GaN-зарядка 65W с USB-C и USB-A. Заряжает ноутбук, планшет и смартфон одновременно.",
+    "specs": {
+      "Мощность": "65W",
+      "Технология": "GaN III",
+      "Порты": "2x USB-C, 1x USB-A",
+      "Вес": "86 г",
+      "Гарантия": "18 месяцев"
+    },
+    "relatedIds": [1, 5, 8]
+  },
+  {
+    "id": 5,
+    "slug": "apple-watch-band-sport",
+    "name": "Ремешок Sport Band для Apple Watch 45mm",
+    "brand": "Apple",
+    "category": "bands",
+    "categoryName": "Аксессуары",
+    "sku": "APL-SB-45MM-MID",
+    "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&q=80"
+    ],
+    "prices": {
+      "retail": 1990,
+      "smallWholesale": 990,
+      "largeWholesale": 650
+    },
+    "minQty": { "smallWholesale": 20, "largeWholesale": 60 },
+    "margin": 206,
+    "stock": 540,
+    "rating": 4.5,
+    "reviews": 76,
+    "isHit": false,
+    "description": "Спортивный ремешок из фторэластомера. Мягкий, лёгкий, не раздражает кожу. Подходит для серий 4–9 и Ultra.",
+    "specs": {
+      "Материал": "Фторэластомер",
+      "Совместимость": "Apple Watch 45/49mm",
+      "Цвет": "Полуночный",
+      "Застёжка": "Классическая пряжка"
+    },
+    "relatedIds": [2, 4, 6]
+  },
+  {
+    "id": 6,
+    "slug": "usb-c-cable-anker-2m",
+    "name": "Кабель Anker USB-C to USB-C 240W 2м",
+    "brand": "Anker",
+    "category": "cables",
+    "categoryName": "Кабели",
+    "sku": "ANK-CC-240W-2M",
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+    ],
+    "prices": {
+      "retail": 890,
+      "smallWholesale": 490,
+      "largeWholesale": 320
+    },
+    "minQty": { "smallWholesale": 30, "largeWholesale": 100 },
+    "margin": 178,
+    "stock": 980,
+    "rating": 4.8,
+    "reviews": 412,
+    "isHit": false,
+    "description": "Нейлоновый кабель для зарядки и передачи данных. Совместим с MacBook, iPad Pro, ноутбуками с USB-C.",
+    "specs": {
+      "Длина": "2 м",
+      "Мощность": "240W",
+      "Скорость данных": "USB 2.0",
+      "Оплётка": "Нейлон",
+      "Гарантия": "12 месяцев"
+    },
+    "relatedIds": [4, 1, 3]
+  },
+  {
+    "id": 7,
+    "slug": "magsafe-wallet-gurdini",
+    "name": "MagSafe-кошелёк Gurdini Leather",
+    "brand": "Gurdini",
+    "category": "cases",
+    "categoryName": "Аксессуары",
+    "sku": "GRD-MSW-LTH-BLK",
+    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&q=80"
+    ],
+    "prices": {
+      "retail": 1490,
+      "smallWholesale": 790,
+      "largeWholesale": 520
+    },
+    "minQty": { "smallWholesale": 20, "largeWholesale": 80 },
+    "margin": 186,
+    "stock": 340,
+    "rating": 4.6,
+    "reviews": 55,
+    "isHit": false,
+    "description": "Кожаный кошелёк с MagSafe для iPhone 12–15. Вмещает 3 карты, кожа буйвола, стальной язычок для извлечения карт.",
+    "specs": {
+      "Материал": "Кожа буйвола",
+      "Совместимость": "iPhone 12–15 с MagSafe",
+      "Вместимость": "3 карты",
+      "Крепление": "MagSafe"
+    },
+    "relatedIds": [2, 5, 1]
+  },
+  {
+    "id": 8,
+    "slug": "powerbank-anker-26800",
+    "name": "Power Bank Anker PowerCore 26800 PD",
+    "brand": "Anker",
+    "category": "powerbanks",
+    "categoryName": "Power Bank",
+    "sku": "ANK-PC-26800-PD",
+    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80"
+    ],
+    "prices": {
+      "retail": 5990,
+      "smallWholesale": 3490,
+      "largeWholesale": 2490
+    },
+    "minQty": { "smallWholesale": 5, "largeWholesale": 20 },
+    "margin": 140,
+    "stock": 115,
+    "rating": 4.9,
+    "reviews": 228,
+    "isHit": false,
+    "description": "Мощный павербанк ёмкостью 26 800 мАч с поддержкой Power Delivery 65W. Заряжает ноутбуки, три устройства одновременно.",
+    "specs": {
+      "Ёмкость": "26 800 мАч",
+      "PD": "65W",
+      "Порты": "2x USB-A, 1x USB-C",
+      "Вес": "498 г",
+      "Гарантия": "18 месяцев"
+    },
+    "relatedIds": [1, 4, 6]
+  }
+]

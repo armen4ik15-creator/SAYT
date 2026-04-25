@@ -1,0 +1,13 @@
+node_modules
+.git
+.gitignore
+.env
+*.log
+data/leads.json
+public/uploads/*.webp
+public/uploads/*.jpg
+public/uploads/*.jpeg
+public/uploads/*.png
+.idea
+.vscode
+.DS_Store
