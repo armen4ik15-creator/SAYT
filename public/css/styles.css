@@ -1163,4 +1163,25 @@ p  { color: var(--ink-soft); }
   .cta-actions { flex-direction: column; }
 }
 @media (max-width: 768px) {
-  .nav, .header-phone, .header-actions .btn { di
+  .nav, .header-phone, .header-actions .btn { display: none; }
+  .burger { display: flex; }
+  .categories-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .whyus-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .cta-banner { padding: 32px 24px; }
+  .hero { padding: 60px 0 60px; }
+  .catalog-layout { grid-template-columns: 1fr; }
+  .filters-sidebar { position: static; }
+}
+@media (max-width: 480px) {
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 16px; }
+  .hero-cta { flex-direction: column; }
+  .hero-cta .btn { justify-content: center; }
+  .catalog-products-grid { grid-template-columns: 1fr; }
+}

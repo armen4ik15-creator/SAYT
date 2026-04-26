@@ -60,9 +60,17 @@ app.get('/api/health', (req, res) => {
 });
 
 // ── Статика ──
+// HTML/JS/CSS — без агрессивного кеша, чтобы новые деплои подхватывались сразу.
+// Картинки и шрифты можно кешировать долго.
 app.use(express.static(path.join(__dirname, 'public'), {
-  maxAge: process.env.NODE_ENV === 'production' ? '7d' : 0,
   extensions: ['html'],
+  setHeaders(res, filePath) {
+    if (/\.(?:html|js|css|json|xml|txt)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+    } else if (/\.(?:png|jpe?g|webp|gif|svg|ico|woff2?|ttf|eot)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=2592000'); // 30 дней
+    }
+  },
 }));
 
 // ── Fallback ──

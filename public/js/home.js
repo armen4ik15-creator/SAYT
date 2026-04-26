@@ -80,4 +80,42 @@
           <a href="product.html?slug=${encodeURIComponent(p.slug)}" class="product-name" style="text-decoration:none; color:inherit;">${escHtml(p.name)}</a>
           <div class="price-table">
             ${p.prices?.retail ? `
-            <div class="
+            <div class="price-row retail">
+              <span class="price-tier">Розница</span>
+              <span class="price-value">${formatPrice(p.prices.retail)}</span>
+            </div>` : ''}
+            <div class="price-row">
+              <span class="price-tier">Мелкий опт</span>
+              <span class="price-value">${formatPrice(p.prices?.smallWholesale)}</span>
+            </div>
+            <div class="price-row wholesale-lg">
+              <span class="price-tier">Крупный опт</span>
+              <span class="price-value">${formatPrice(p.prices?.largeWholesale)}</span>
+            </div>
+          </div>
+          <div class="product-card-footer">
+            <a href="product.html?slug=${encodeURIComponent(p.slug)}" class="btn btn-primary btn-sm">Подробнее</a>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── Калькулятор прибыли ──
+  const slider = document.getElementById('purchaseSlider');
+  if (slider) {
+    const update = () => {
+      const v = parseInt(slider.value, 10);
+      const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+      set('purchaseAmount', formatPrice(v));
+      set('profitMin', formatPrice(v));
+      set('profitMax', formatPrice(v * 3));
+      set('monthlyRevenue', formatPrice(v * 2 * 2));
+    };
+    slider.addEventListener('input', update);
+    update();
+  }
+
+  // ── Esc для модалки ──
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+})();
