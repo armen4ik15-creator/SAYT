@@ -22,7 +22,7 @@ const upload = multer({
   },
 });
 
-router.post('/', requireAdmin, upload.array('images', 10), async (req, res, next) => {
+router.post('/', requireAdmin, upload.array('images', 10), async (req, res) => {
   try {
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ error: 'No files to upload' });
@@ -31,25 +31,41 @@ router.post('/', requireAdmin, upload.array('images', 10), async (req, res, next
     for (const file of req.files) {
       const id = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
       const filename = id + '.webp';
-      const buffer = await sharp(file.buffer)
-        .rotate()
-        .resize({ width: 1200, height: 1200, fit: 'inside', withoutEnlargement: true })
-        .webp({ quality: 82 })
-        .toBuffer();
+      let buffer;
+      try {
+        buffer = await sharp(file.buffer)
+          .rotate()
+          .resize({ width: 1200, height: 1200, fit: 'inside', withoutEnlargement: true })
+          .webp({ quality: 82 })
+          .toBuffer();
+      } catch (e) {
+        console.error('[upload] sharp error:', e.message);
+        return res.status(400).json({ error: 'Не удалось обработать изображение: ' + e.message });
+      }
 
       let url;
       if (s3.isEnabled()) {
-        url = await s3.putObject('products/' + filename, buffer, 'image/webp');
+        try {
+          url = await s3.putObject('products/' + filename, buffer, 'image/webp');
+        } catch (e) {
+          console.error('[upload] S3 error:', e.name, e.message, e.$metadata && e.$metadata.httpStatusCode);
+          // Запасной вариант — локальный диск (фото потеряется при ребилде, но хотя бы загрузится)
+          const target = path.join(UPLOAD_DIR, filename);
+          fs.writeFileSync(target, buffer);
+          url = '/uploads/' + filename;
+          console.warn('[upload] S3 failed, saved to local: ' + url);
+        }
       } else {
         const target = path.join(UPLOAD_DIR, filename);
         fs.writeFileSync(target, buffer);
         url = '/uploads/' + filename;
       }
-      out.push({ url, filename, size: buffer.length });
+      out.push({ url: url, filename: filename, size: buffer.length });
     }
     res.json({ items: out });
   } catch (e) {
-    next(e);
+    console.error('[upload] fatal:', e);
+    res.status(500).json({ error: e.message || 'Upload error' });
   }
 });
 
