@@ -64,10 +64,11 @@ app.use((err, req, res, next) => {
     await migrate();
     if (process.env.DATABASE_URL) {
       console.log('MySQL connected, schema ready');
-      const { getPool } = require('./src/db/mysqlStore');
+      const { getPool, tableName } = require('./src/db/mysqlStore');
       const pool = getPool();
       for (const name of ['products', 'leads']) {
-        const [rows] = await pool.query('SELECT COUNT(*) AS c FROM `' + name + '`');
+        const table = tableName(name);
+        const [rows] = await pool.query('SELECT COUNT(*) AS c FROM `' + table + '`');
         if (rows[0].c === 0) {
           const file = path.join(__dirname, 'data', name + '.json');
           if (fs.existsSync(file)) {
@@ -75,8 +76,8 @@ app.use((err, req, res, next) => {
               const items = JSON.parse(fs.readFileSync(file, 'utf8'));
               if (Array.isArray(items) && items.length) {
                 const values = items.map(i => [i.id || Math.floor(Date.now() + Math.random() * 1000), JSON.stringify(i)]);
-                await pool.query('INSERT INTO `' + name + '` (id, data) VALUES ?', [values]);
-                console.log('  imported ' + items.length + ' ' + name + ' from JSON');
+                await pool.query('INSERT INTO `' + table + '` (id, data) VALUES ?', [values]);
+                console.log('  imported ' + items.length + ' ' + name + ' from JSON to ' + table);
               }
             } catch (e) { console.warn('migrate ' + name + ':', e.message); }
           }
