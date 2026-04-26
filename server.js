@@ -1,7 +1,3 @@
-/**
- * Mobitrend store — основной сервер
- * Express + JSON-хранилище (с возможностью переключения на БД через env)
- */
 require('dotenv').config();
 
 const path = require('path');
@@ -21,74 +17,79 @@ const leadsRouter = require('./src/routes/leads');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ── Базовые middleware ──
 app.set('trust proxy', 1);
-app.use(helmet({
-  contentSecurityPolicy: false,
-  crossOriginResourcePolicy: { policy: 'cross-origin' },
-}));
+app.use(helmet({ contentSecurityPolicy: false, crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(compression());
 app.use(cors());
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// ── Rate limiter для API ──
-const apiLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 120,
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-app.use('/api/', apiLimiter);
+app.use('/api/', rateLimit({ windowMs: 60000, max: 120, standardHeaders: true, legacyHeaders: false }));
 
-// ── Создание директорий ──
-const uploadsDir = path.join(__dirname, 'public', 'uploads');
-const dataDir = path.join(__dirname, 'data');
-fs.mkdirSync(uploadsDir, { recursive: true });
-fs.mkdirSync(dataDir, { recursive: true });
+fs.mkdirSync(path.join(__dirname, 'public', 'uploads'), { recursive: true });
+fs.mkdirSync(path.join(__dirname, 'data'), { recursive: true });
 
-// ── API ──
 app.use('/api/auth', authRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/leads', leadsRouter);
 
-// ── Healthcheck ──
-app.get('/api/health', (req, res) => {
-  res.json({ ok: true, time: new Date().toISOString() });
-});
+app.get('/api/health', (req, res) => res.json({ ok: true, time: new Date().toISOString() }));
 
-// ── Статика ──
-// HTML/JS/CSS — без агрессивного кеша, чтобы новые деплои подхватывались сразу.
-// Картинки и шрифты можно кешировать долго.
 app.use(express.static(path.join(__dirname, 'public'), {
   extensions: ['html'],
   setHeaders(res, filePath) {
     if (/\.(?:html|js|css|json|xml|txt)$/i.test(filePath)) {
       res.setHeader('Cache-Control', 'no-cache, must-revalidate');
     } else if (/\.(?:png|jpe?g|webp|gif|svg|ico|woff2?|ttf|eot)$/i.test(filePath)) {
-      res.setHeader('Cache-Control', 'public, max-age=2592000'); // 30 дней
+      res.setHeader('Cache-Control', 'public, max-age=2592000');
     }
   },
 }));
 
-// ── Fallback ──
 app.use((req, res) => {
-  if (req.path.startsWith('/api/')) {
-    return res.status(404).json({ error: 'Not found' });
-  }
+  if (req.path.startsWith('/api/')) return res.status(404).json({ error: 'Not found' });
   res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.use((err, req, res, next) => {
   console.error('[error]', err);
-  res.status(err.status || 500).json({
-    error: err.message || 'Внутренняя ошибка сервера',
-  });
+  res.status(err.status || 500).json({ error: err.message || 'Internal error' });
 });
 
+(async () => {
+  try {
+    const { migrate } = require('./src/db/store');
+    await migrate();
+    if (process.env.DATABASE_URL) {
+      console.log('MySQL connected, schema ready');
+      const { getPool } = require('./src/db/mysqlStore');
+      const pool = getPool();
+      for (const name of ['products', 'leads']) {
+        const [rows] = await pool.query('SELECT COUNT(*) AS c FROM `' + name + '`');
+        if (rows[0].c === 0) {
+          const file = path.join(__dirname, 'data', name + '.json');
+          if (fs.existsSync(file)) {
+            try {
+              const items = JSON.parse(fs.readFileSync(file, 'utf8'));
+              if (Array.isArray(items) && items.length) {
+                const values = items.map(i => [i.id || Math.floor(Date.now() + Math.random() * 1000), JSON.stringify(i)]);
+                await pool.query('INSERT INTO `' + name + '` (id, data) VALUES ?', [values]);
+                console.log('  imported ' + items.length + ' ' + name + ' from JSON');
+              }
+            } catch (e) { console.warn('migrate ' + name + ':', e.message); }
+          }
+        }
+      }
+    } else {
+      console.log('Using JSON storage (DATABASE_URL not set)');
+    }
+  } catch (e) {
+    console.error('[db] init error:', e.message);
+  }
+})();
+
 app.listen(PORT, () => {
-  console.log(`✓ Mobitrend server running on http://localhost:${PORT}`);
-  console.log(`  Admin: http://localhost:${PORT}/admin.html`);
+  console.log('Mobitrend server running on http://localhost:' + PORT);
 });

@@ -1,7 +1,3 @@
-/**
- * Простое потокобезопасное хранилище в JSON-файле.
- * Универсальный fallback, если БД ещё не подключена.
- */
 const fs = require('fs');
 const path = require('path');
 
@@ -21,7 +17,7 @@ class JsonStore {
     }
   }
 
-  read() {
+  async read() {
     try {
       const raw = fs.readFileSync(this.filePath, 'utf8');
       return JSON.parse(raw);
@@ -29,6 +25,11 @@ class JsonStore {
       console.error('[jsonStore] read error:', e.message);
       return this.defaultValue;
     }
+  }
+
+  readSync() {
+    try { return JSON.parse(fs.readFileSync(this.filePath, 'utf8')); }
+    catch { return this.defaultValue; }
   }
 
   write(data) {
